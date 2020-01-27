@@ -4,7 +4,10 @@
 
 Insert JWT class+ resource
 
-1. call localhost:8080/authenticate to get token
+1. call localhost:8080/authenticate  
+  passing in {"username" : "...",
+              "password" : "..."}
+  to get token
 
 2. Add token to the header
   key-> Authorization
