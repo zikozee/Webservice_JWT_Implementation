@@ -3,7 +3,7 @@ package com.zikozee.sprinboot.consumingwebservices.Controller;
 import com.zikozee.sprinboot.consumingwebservices.Entity.Address;
 import com.zikozee.sprinboot.consumingwebservices.Entity.User;
 import com.zikozee.sprinboot.consumingwebservices.Service.UserService;
-import com.zikozee.sprinboot.consumingwebservices.globalHandling.UserNotFoundException;
+import com.zikozee.sprinboot.consumingwebservices.jwt.resource.AuthenticationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +29,7 @@ public class UserRestController {
     @GetMapping("/users/{userId}")
     public User getUser(@PathVariable int userId){
         if(userId >= userService.getUserList().size() || userId<= 0){
-            throw new UserNotFoundException("Student id not found -  " + userId);
+            throw new AuthenticationException("Student id not found -  " + userId);
         }
         return userService.getUser(userId);
     }
@@ -43,7 +43,7 @@ public class UserRestController {
     @GetMapping("/users/address/{userId}")
     public Address getUserAddress(@PathVariable int userId){
         if(userId >= userService.getUserList().size() || userId<= 0){
-            throw new UserNotFoundException("Student id not found -  " + userId);
+            throw new AuthenticationException("Student id not found -  " + userId);
         }
         return userService.getUserAddress(userId);
     }
