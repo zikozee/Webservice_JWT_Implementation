@@ -4,7 +4,7 @@
 
 Insert JWT class+ resource
 
-1. call localhost:8080/authenticate  
+1. call a POST localhost:8080/authenticate  
   passing in {"username" : "...",
               "password" : "..."}
   to get token
