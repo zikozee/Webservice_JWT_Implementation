@@ -15,3 +15,7 @@ Insert JWT class+ resource
 
 3. Call endpoint now n u'll get a 200
 
+4. To refresh token, call localhost:8080/refresh
+ with header
+  key-> Authorization
+  value-> Bearer <token>
