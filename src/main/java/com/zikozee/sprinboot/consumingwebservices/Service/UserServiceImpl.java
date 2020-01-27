@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService{
 
         // get the list  of users from response
         List<User> users = responseEntity.getBody();
-        log.info("in userList: users " + users);
+        log.info("in userList: users => " + users);
         return users;
     }
 
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService{
         User user = restTemplate.
                 getForObject(url + "/" + id, User.class);
 
-        log.info("in getUser: users" + user);
+        log.info("in getUser: users => " + user);
         return user;
     }
 
