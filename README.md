@@ -13,7 +13,7 @@ Insert JWT class+ resource
   key-> Authorization
   value-> Bearer <token>
 
-3. Call endpoint now n u'll get a 200
+3. Call endpoint now n u'll get a 200. since token has now been passed in header no need for username and password
 
 4. To refresh token, call localhost:8080/refresh
  with header
