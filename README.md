@@ -1,6 +1,6 @@
 # Webservice_JWT_Implementation
 
-
+[![CircleCI](https://circleci.com/gh/zikozee/Webservice_JWT_Implementation/tree/master.svg?style=svg)](https://circleci.com/gh/zikozee/Webservice_JWT_Implementation/tree/master)
 
 Insert JWT class+ resource
 
