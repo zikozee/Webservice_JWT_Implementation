@@ -38,14 +38,14 @@ public class UserServiceImpl implements UserService{
         log.info("in userList: Calling REST API " + url);
         //make REST call
 
-        //Start
+        //Start  ---->>>>>>>>>>>>REMOVE START TO END n replace entity eith null, does not work
         //Set the headers you need send
         final HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aWtvemVlIiwiZXhwIjoxNTk1OTM5NzU0LCJpYXQiOjE1OTUzMzQ5NTR9.93UJEtBSM3LDPnAVWGdJ-txQstGesWbTwqasTnlpeiCYNzxho_ZJFeP3td2xGNQxU_KUvViscXfwnMVQTf0XFA");
 
         //Create a new HttpEntity
         final HttpEntity<String> entity = new HttpEntity<>(headers);
-
+        //End
         ResponseEntity<List<User>> responseEntity =
                 restTemplate.exchange(url, HttpMethod.GET, entity,
                         new ParameterizedTypeReference<List<User>>(){});
