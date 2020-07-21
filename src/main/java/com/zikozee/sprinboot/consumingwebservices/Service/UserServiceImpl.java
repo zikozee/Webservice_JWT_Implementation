@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService{
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
 //    //Field Injection
 //    @Value("${crm.rest.url}")
@@ -34,12 +36,21 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> getUserList(){
         log.info("in userList: Calling REST API " + url);
-
         //make REST call
+
+        //Start
+        //Set the headers you need send
+        final HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aWtvemVlIiwiZXhwIjoxNTk1OTM5NzU0LCJpYXQiOjE1OTUzMzQ5NTR9.93UJEtBSM3LDPnAVWGdJ-txQstGesWbTwqasTnlpeiCYNzxho_ZJFeP3td2xGNQxU_KUvViscXfwnMVQTf0XFA");
+
+        //Create a new HttpEntity
+        final HttpEntity<String> entity = new HttpEntity<>(headers);
+
         ResponseEntity<List<User>> responseEntity =
-                restTemplate.exchange(url, HttpMethod.GET, null,
+                restTemplate.exchange(url, HttpMethod.GET, entity,
                         new ParameterizedTypeReference<List<User>>(){});
 
+        //End
         // get the list  of users from response
         List<User> users = responseEntity.getBody();
         log.info("in userList: users => " + users);
